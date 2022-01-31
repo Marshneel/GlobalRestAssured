@@ -9,12 +9,13 @@ public class ReusableMethods {
     public Response sendPostRequest(GraphQLQuery query){
 
         Response response =
-                given().
+                given().log().all().
                         contentType(ContentType.JSON).
                         body(query).
                         when().
                         post("https://api.spacex.land/graphql/").
                         then().
+                        log().all().
                         extract().
                         response();
 
